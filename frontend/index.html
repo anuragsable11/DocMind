@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DocMind — Chat With Your Documents</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Header -->
+        <header class="header">
+
+            <div>
+                <h1>🧠 DocMind</h1>
+                <p>Chat With Your Documents</p>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                Local AI
+            </div>
+
+        </header>
+
+
+        <!-- PDF Upload -->
+        <section class="upload-section">
+
+            <label for="pdf-file" class="upload-button">
+                📄 Choose PDF
+            </label>
+
+            <input
+                type="file"
+                id="pdf-file"
+                accept=".pdf,application/pdf"
+                hidden
+            >
+
+            <span id="upload-status">
+                No document selected
+            </span>
+
+        </section>
+
+
+        <!-- Chat -->
+        <main class="chat-container">
+
+            <!-- Welcome message -->
+            <div class="message assistant-message">
+
+                <div class="avatar">
+                    🧠
+                </div>
+
+                <div class="message-content">
+
+                    <div class="message-name">
+                        DocMind
+                    </div>
+
+                    <div class="bubble">
+                        Hello! Upload a PDF and ask me anything
+                        about your document.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Dynamic messages appear here -->
+            <div id="chat-messages"></div>
+
+        </main>
+
+
+        <!-- Input -->
+        <footer class="input-area">
+
+            <div class="input-wrapper">
+
+                <textarea
+                    id="question"
+                    placeholder="Ask something about your document..."
+                    rows="1"
+                ></textarea>
+
+                <button id="ask-button">
+                    Ask
+                </button>
+
+            </div>
+
+            <p class="hint">
+                DocMind uses RAG to answer questions from your document.
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>

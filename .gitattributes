@@ -1,0 +1,16 @@
+# Normalize text to LF in the repo, checkout native on Windows
+* text=auto
+
+# Never apply EOL conversion to binaries (it corrupts them)
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.bin   binary
+*.sqlite3 binary
+*.pyc   binary
+
+# Keep shell scripts LF even on Windows
+*.sh    text eol=lf

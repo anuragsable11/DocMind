@@ -1,0 +1,47 @@
+# Virtual environment
+myenv/
+venv/
+.venv/
+env/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# ChromaDB vector store (regenerated from documents/ on ingest)
+chroma_db/
+
+# Uploaded documents (keep sample.pdf as a fixture)
+documents/*
+!documents/sample.pdf
+
+# Testing & type-checker caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
