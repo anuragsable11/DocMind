@@ -1,0 +1,223 @@
+🧠 DocMind — Project Revision
+1. Create Project
+Create DocMind folder
+↓
+Open terminal
+↓
+Create Python 3.12 virtual environment
+↓
+Activate environment
+
+Important commands:
+
+py -0p
+py -3.12 -m venv myenv
+myenv\Scripts\activate
+2. Install Dependencies
+pip install fastapi uvicorn
+pip install pymupdf
+pip install sentence-transformers
+pip install scikit-learn
+pip install chromadb
+pip install ollama
+pip install python-multipart
+
+Save dependencies:
+
+pip freeze > requirements.txt
+3. Project Structure
+DocMind/
+│
+├── app/
+├── documents/
+├── chroma_db/
+├── frontend/
+├── myenv/
+├── .gitignore
+└── requirements.txt
+4. PDF Processing
+
+Technology: PyMuPDF
+
+Flow:
+
+PDF
+ ↓
+Extract text page-by-page
+ ↓
+Keep page numbers
+
+Purpose:
+
+Convert PDF into usable text while preserving source pages.
+
+5. Chunking
+
+Technology: Python
+
+Flow:
+
+Large text
+ ↓
+Smaller chunks
+ ↓
+Overlap between chunks
+
+Purpose:
+
+Make documents easier to search and provide focused context to the LLM.
+
+6. Embeddings
+
+Technology: Sentence Transformers
+
+Model:
+
+all-MiniLM-L6-v2
+
+Flow:
+
+Text
+ ↓
+Embedding Model
+ ↓
+384-dimensional vector
+
+Purpose:
+
+Convert text into numerical representations for semantic search.
+
+7. Similarity Search
+
+Technology: scikit-learn + ChromaDB
+
+Concept:
+
+Question Vector
+       ↓
+Compare with document vectors
+       ↓
+Find most similar chunks
+
+Important:
+
+Cosine similarity → higher = more similar
+
+Cosine distance → lower = more similar
+8. Vector Database
+
+Technology: ChromaDB
+
+Stores:
+
+Chunk
+Embedding
+Document ID
+Filename
+Page number
+
+Purpose:
+
+Store and retrieve document information based on semantic similarity.
+
+9. Document ID
+
+Each uploaded PDF gets a unique ID.
+
+Purpose:
+
+PDF A → document_id A
+PDF B → document_id B
+
+When asking about PDF A:
+
+Search only document_id A
+
+This prevents mixing documents.
+
+10. RAG Pipeline
+
+The most important part:
+
+Question
+ ↓
+Question Embedding
+ ↓
+ChromaDB Similarity Search
+ ↓
+Relevant Chunks
+ ↓
+Context
+ ↓
+LLM
+ ↓
+Answer + Source Pages
+
+RAG = Retrieval + Augmentation + Generation
+
+11. LLM
+
+Technology:
+
+Ollama
+ ↓
+Qwen3:4b
+
+Check installed models:
+
+ollama list
+
+Test Ollama through the Python application:
+
+python -m app.llm
+
+Important distinction:
+
+Embedding Model
+→ Finds relevant information
+
+LLM
+→ Generates the final answer
+12. FastAPI
+
+Backend endpoints:
+
+GET  /
+GET  /health
+POST /upload
+POST /chat
+
+Start the server:
+
+uvicorn app.main:app --reload
+
+Open:
+
+http://127.0.0.1:8000
+
+Swagger:
+
+http://127.0.0.1:8000/docs
+13. Frontend
+
+Technology:
+
+HTML
+CSS
+JavaScript
+
+Flow:
+
+Choose PDF
+ ↓
+/upload
+ ↓
+Receive document_id
+ ↓
+Ask question
+ ↓
+/chat
+ ↓
+Display answer
+ ↓
+Display source pages

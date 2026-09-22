@@ -1,22 +1,20 @@
-# Web framework / API  (app/main.py)
+# Web layer
 fastapi==0.141.1
 uvicorn==0.53.0
 python-multipart==0.0.32
-pydantic==2.13.5
 
-# PDF text extraction  (app/pdf_reader.py -> import fitz)
-PyMuPDF==1.28.2
+# PDF parsing
+pymupdf==1.28.2
 
-# Embeddings  (app/embedder.py)
+# Embeddings + vector store
 sentence-transformers==6.1.0
-torch==2.14.0
-
-# Vector store  (app/vector_store.py)
 chromadb==1.5.9
 
-# Similarity scoring  (app/similarity.py)
-scikit-learn==1.9.1
-numpy==2.5.3
+# Generation
+google-genai==2.24.0
 
-# Local LLM client  (app/llm.py)
-ollama==0.6.2
+# Config
+python-dotenv==1.2.3
+
+# Only needed by app/similarity.py, a scratch script:
+# scikit-learn==1.9.1
