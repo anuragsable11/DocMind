@@ -26,6 +26,11 @@ app.mount(
 
 
 @app.get("/")
+def landing():
+    return FileResponse("frontend/landing.html")
+
+
+@app.get("/app")
 def home():
     return FileResponse("frontend/index.html")
 

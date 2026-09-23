@@ -68,7 +68,7 @@ Then start the server:
 uvicorn app.main:app --reload
 ```
 
-Open <http://127.0.0.1:8000>, upload a PDF, and ask away.
+Open <http://127.0.0.1:8000> for the landing page, or go straight to the app at <http://127.0.0.1:8000/app> — upload a PDF and ask away.
 
 > **First run is slow.** sentence-transformers downloads the embedding model (~90 MB) on first import. Subsequent starts are fast — it's cached.
 

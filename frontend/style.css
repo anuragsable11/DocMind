@@ -182,6 +182,8 @@ button { background: none; border: none; cursor: pointer; }
 
 .brand {
     display: flex;
+    color: inherit;
+    text-decoration: none;
     align-items: center;
     gap: 11px;
 }
